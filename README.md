@@ -8,7 +8,7 @@ When only using thruk it's enough to only build and install the thruk policies.
 ## Dependencies
 selinux-policy-devel
 
-## installation
+## Installation
 clone the repository
 cd naemon
 make -f /usr/share/selinux/devel/Makefile
