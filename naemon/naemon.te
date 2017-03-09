@@ -1,0 +1,36 @@
+
+policy_module(naemon, 0.1.0)
+
+type naemon_etc_t;
+files_type(naemon_etc_t)
+
+type naemon_var_log_t;
+files_type(naemon_var_log_t)
+
+type naemon_var_cache_t;
+files_type(naemon_var_cache_t)
+
+
+require {
+        type var_t;
+        type httpd_t;
+        type naemon_etc_t;
+        type naemon_var_log_t;
+        type naemon_var_cache_t;
+        class capability fowner;
+        class sock_file { write getattr };
+        class file { open read write ioctl unlink setattr append create getattr };
+        class dir { read setattr write remove_name add_name create };
+        class lnk_file read;
+}
+
+#============= httpd_t ==============
+allow httpd_t naemon_etc_t:dir { add_name read write };
+allow httpd_t naemon_etc_t:file { read write ioctl open setattr getattr create };
+allow httpd_t naemon_etc_t:lnk_file read;
+allow httpd_t naemon_var_log_t:file { read ioctl append open getattr };
+allow httpd_t naemon_var_cache_t:dir { setattr write remove_name add_name create };
+allow httpd_t naemon_var_cache_t:file { read ioctl unlink open create append setattr write rename getattr };
+allow httpd_t naemon_var_cache_t:sock_file { write getattr };
+allow httpd_t self:capability fowner;
+

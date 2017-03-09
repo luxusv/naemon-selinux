@@ -1,0 +1,6 @@
+
+/etc/thruk(/.*)?               gen_context(system_u:object_r:thruk_etc_t,s0)
+/var/log/thruk(/.*)?           gen_context(system_u:object_r:thruk_var_log_t,s0)
+/var/cache/thruk(/.*)?         gen_context(system_u:object_r:thruk_var_cache_t,s0)
+/var/lib/thruk(/.*)?           gen_context(system_u:object_r:thruk_var_lib_t,s0)
+

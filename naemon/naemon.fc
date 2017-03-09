@@ -1,0 +1,5 @@
+
+/etc/naemon(/.*)?               gen_context(system_u:object_r:naemon_etc_t,s0)
+/var/log/naemon(/.*)?           gen_context(system_u:object_r:naemon_var_log_t,s0)
+/var/cache/naemon(/.*)?         gen_context(system_u:object_r:naemon_var_cache_t,s0)
+
